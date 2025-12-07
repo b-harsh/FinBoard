@@ -135,7 +135,7 @@ const AddWidgetModal = ({ onClose, widgetToEdit = null }) => {
               />
               <button
                 className={styles.testBtn}
-                onClick={handleTestApi}
+                onClick={() => handleTestApi(apiUrl)}
                 disabled={isTesting}
               >
                 {isTesting ? 'Testing...' : '↻ Test'}

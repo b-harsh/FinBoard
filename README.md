@@ -93,7 +93,7 @@ https://github.com/user-attachments/assets/df6b4c69-e1b6-4c18-b23d-13bd6579c0c1
 
 1. **Clone the repository**
    ```bash
-   git clone [https://github.com/your-username/finboard.git](https://github.com/your-username/finboard.git)
+   git clone https://github.com/b-harsh/FinBoard.git
    cd finboard
 2. **Install dependencies**
    ```bash

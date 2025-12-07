@@ -9,6 +9,10 @@
 
 ## 🚀 Live Demo
 
+<img width="1919" height="1032" alt="image" src="https://github.com/user-attachments/assets/bab70b28-78b7-4b15-a82e-ed4f640ead0f" />
+
+<img width="1915" height="1051" alt="image" src="https://github.com/user-attachments/assets/ecff9e6d-03f8-4c2b-b21d-306991e650c3" />
+
 
 https://github.com/user-attachments/assets/2260169a-4d3e-4aba-8932-44c4002c976f
 

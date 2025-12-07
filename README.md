@@ -1,36 +1,137 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📊 FinBoard - Customizable Real-Time Finance Dashboard
 
-## Getting Started
+> A dynamic, drag-and-drop finance dashboard builder that allows users to connect **any JSON API** and visualize data in real-time without writing code.
 
-First, run the development server:
+![Next.js](https://img.shields.io/badge/Next.js-14-black)
+![Redux](https://img.shields.io/badge/Redux-Toolkit-purple)
+![Chart.js](https://img.shields.io/badge/Chart.js-3.9-orange)
+![License](https://img.shields.io/badge/License-MIT-green)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 🚀 Live Demo
+**[Insert Your Vercel Link Here]**
+
+---
+
+## 💡 The Problem & Solution
+**The Challenge:** Most dashboards are hard-coded to specific APIs. If the API changes or a user wants to track a new metric (e.g., a specific crypto token or stock), developers have to write new code.
+
+**The FinBoard Solution:** I built a **Universal API Connector**.
+- Users paste *any* public API URL.
+- The app **dynamically parses** the JSON response.
+- Users "point and click" to select the specific data fields they want to track (e.g., `data.rates.BTC`).
+- The dashboard automatically generates a Widget (Card, Table, or Chart) bound to that specific data path.
+
+---
+
+## ✨ Key Features
+
+### 1. 🔌 Universal Widget Builder (The "JSON Explorer")
+- Connect to **any REST API** (Crypto, Stocks, Weather, etc.).
+- **Dynamic Field Mapping:** Automatically flattens complex nested JSON into selectable paths.
+- **Test Connection:** Verifies API response before creating the widget.
+
+### 2. 📈 Real-Time Visualization
+- **Live Charts:** Line graphs that update in real-time as new data points arrive.
+- **Data Tables:** Dynamic tables with search, sort, and pagination logic.
+- **Finance Cards:** Custom cards highlighting primary and secondary metrics.
+
+### 3. 🖱️ Drag-and-Drop Layout
+- Built with `react-grid-layout`.
+- Fully responsive grid (widgets resize automatically on mobile).
+- Widgets can be resized and moved freely.
+
+### 4. 💾 Robust Data Persistence
+- **Auto-Save:** Dashboard state (layout + configurations) is saved to `localStorage` instantly.
+- **Export/Import:** Users can download their config as a `.json` file and restore it on another device.
+
+### 5. 🎨 UI/UX Polish
+- **Dark/Light Mode:** Seamless theme switching with CSS variables.
+- **Interactive States:** Loading skeletons, error handling, and hover effects.
+
+---
+
+## 🛠️ Tech Stack
+
+- **Frontend:** Next.js 14 (App Router)
+- **State Management:** Redux Toolkit (Slices for Widgets & API Config)
+- **Styling:** CSS Modules & Styled JSX (Scoped styling)
+- **Visualization:** Chart.js & React-Chartjs-2
+- **Grid System:** React-Grid-Layout
+- **Utilities:** Lodash (for deep object property extraction)
+
+---
+
+## 🏃‍♂️ Getting Started
+
+### Prerequisites
+- Node.js (v18 or higher)
+- npm or yarn
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone [https://github.com/your-username/finboard.git](https://github.com/your-username/finboard.git)
+   cd finboard
+2. **Install dependencies**
+   ```bash
+   npm install
+3. **Run the development server**
+   ```bash
+   npm run dev 
+4. **Open in Browser Visit http://localhost:3000 to see the app.**
+
+## 🧪 How to Test (Example)
+
+To test the **Table Widget**, use this free CoinGecko API URL *(no API key required)*:
+
+### **URL**
+
+```
+https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=false
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### **Steps**
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+1. Click **+ Add Widget**
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+2. Paste the URL above
 
-## Learn More
+3. Click **Test**
 
-To learn more about Next.js, take a look at the following resources:
+4. Select **Display Mode: Table**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+5. Add these fields from the list:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+   * `name` → **Company**
+   * `current_price` → **Price**
+   * `high_24h` → **24h High**
 
-## Deploy on Vercel
+6. Click **Add Widget**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📂 Project Structure
+
+```
+src/
+├── app/                 # Next.js App Router Pages
+├── components/
+│   ├── Dashboard/       # Widget Logic (Card, Chart, Modal)
+│   ├── UI/              # Reusable UI (Navbar, Buttons)
+│   └── Logic/           # Invisible Logic (Persistence)
+├── store/               # Redux Toolkit Setup
+│   └── slices/          # Widget State Slices
+├── hooks/               # Custom Hooks (useWidgetData)
+└── utils/               # Helpers (JSON Flattener)
+```
+
+---
+
+## 🔮 Future Improvements
+
+* [ ] Server-Side Rendering (SSR) for initial data pre-fetching
+* [ ] OAuth integration for saving dashboards to a user account
+* [ ] WebSocket support for sub-second updates (e.g., Binance Stream)
+
+---

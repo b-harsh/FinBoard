@@ -31,15 +31,18 @@ const AddWidgetModal = ({ onClose, widgetToEdit = null }) => {
   }, [widgetToEdit]);
 
   const handleTestApi = async (urlOverride = null) => {
-    const urlToUse = urlOverride || apiUrl;
+    const validOverride = typeof urlOverride === 'string' ? urlOverride : null;
+    const urlToUse = validOverride || apiUrl;
     setIsTesting(true);
     setConnectionStatus(null);
     try {
       const res = await fetch(urlToUse);
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const data = await res.json();
-      setAvailableFields(getAvailablePaths(data));
+      const fields = getAvailableFields(data);
+      setAvailableFields(fields);
       setConnectionStatus('success');
-    } catch {
+    } catch (err) {
       setConnectionStatus('error');
     } finally {
       setIsTesting(false);
